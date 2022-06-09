@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Coding Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./Assets/CSS/style.css">
+  </head>
+  <body>
+    <!--nav bar with high scores and timer-->
+    <nav>
+      <div id="score">High Scores</div>
+      <div id="timer"></div>
+    </nav>
+
+    <div class="container">
+      <div id="question-container" class="hidden"></div>
+
+        <!--Instructions-->
+        <div id="instructions">Instructions</div>
+          <div class="info">You have 2 minutes (120 seconds) to complete this quiz</div>
+          <div class="info">Every wrong answer will subtract 10 seconds from the timer</div>
+          <div class="info">You may only select a single option</div>
+          <div class="info">Once you have selected your option, you may not change your answer</div>
+          <div class="info">The quiz is over when you have answered all the questions or the timer hits 0</div>
+
+        <!--Start Button-->
+        <button class="start_btn">Start</button>
+
+        <div id="questions"></div>
+
+        <div id="answers" class="ans_grid">
+          <button class="button"></button>
+          <button class="button"></button>
+          <button class="button"></button>
+          <button class="button"></button>
+        </div>
+    </div>
+    
+    <script src="./Assets/JS/script.js" ></script>
+  </body>
+</html>
