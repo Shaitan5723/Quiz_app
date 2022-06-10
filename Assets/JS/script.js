@@ -79,3 +79,25 @@ const quizQ = [
     correct: 'b'
   },
 ]
+
+var total_seconds = 60*2;
+var c_minutes = parseInt(total_seconds/60);
+var c_seconds = parseInt(total_seconds%60);
+
+start_btn.addEventListener("click", startTimer);
+
+function startTimer() {
+  setInterval(function (){
+    document.getElementById("timer").innerHTML
+    ='Time Left: ' + c_minutes + ' minutes ' + c_seconds + ' seconds ';
+    if(total_seconds <=0){
+      setTimeout('document.quiz.submit()', 1);
+    } else {
+     total_seconds = total_seconds -1;
+      c_minutes = parseInt(total_seconds/60);
+      c_seconds = parseInt(total_seconds%60);
+
+    }
+  }, 1000);
+}
+
