@@ -10,21 +10,22 @@
   </head>
   <body>
     <!--nav bar with high scores and timer-->
-    <nav>
-      <div id="score">High Scores</div>
+    <div class="nav">
+      <div id="score" class="score">High Scores</div>
       <div id="timer" class="timer">Timer</div>
-    </nav>
+    </div>
 
     <div class="container">
-      <div id="quiz-container" class="hidden"></div>
+      <div id="quiz-container" class="hidden">
 
         <!--Instructions-->
-        <div id="instructions">Instructions</div>
+        <div id="instructions">Instructions
           <div class="info">You have 2 minutes (120 seconds) to complete this quiz.</div>
           <div class="info">Every wrong answer will subtract 10 seconds from the timer.</div>
           <div class="info">You may only select a single option.</div>
           <div class="info">Once you have selected your option, you may not change your answer.</div>
           <div class="info">The quiz is over when you have answered all the questions or the timer hits 0.</div>
+        </div>
 
         <!--Start Button-->
         <button id= "start_btn" class="button">Start</button>
@@ -37,6 +38,7 @@
           <button class="button">Answer 3</button>
           <button class="button">Answer 4</button>
         </div>
+      </div>
     </div>
     
     <script src="./Assets/JS/script.js" ></script>

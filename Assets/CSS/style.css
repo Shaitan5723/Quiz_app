@@ -14,16 +14,36 @@ body{
   min-height: 100vh;
 }
 
-nav{
+.nav{
+  position:fixed;
+  top: 0;
   display: inline-flex;
+  background-color: grey;
+  border-width: 2px;
+  border-color:black;
 }
 
-timer{
-  justify-content: right;
+.score{
+  float:left;
+  font-size: 25px;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
 }
+
+.timer{
+  float: right;
+  font-size: 25px;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
 .container{
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
 }
 
 #quiz-container{
