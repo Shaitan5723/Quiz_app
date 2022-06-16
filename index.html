@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Coding Quiz</title>
+    <title>Javascript Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./Assets/CSS/style.css">
   </head>
@@ -16,29 +16,34 @@
     </div>
 
     <div class="container">
-      <div id="quiz-container" class="hidden">
-
-        <!--Instructions-->
-        <div id="instructions">Instructions
-          <div class="info">You have 2 minutes (120 seconds) to complete this quiz.</div>
-          <div class="info">Every wrong answer will subtract 10 seconds from the timer.</div>
-          <div class="info">You may only select a single option.</div>
-          <div class="info">Once you have selected your option, you may not change your answer.</div>
-          <div class="info">The quiz is over when you have answered all the questions or the timer hits 0.</div>
-        </div>
-
-        <!--Start Button-->
+      <!--Instructions-->
+      <div id="instructions">
+        <h1>Instructions</h1>
+        <div class="info">You have 2 minutes (120 seconds) to complete this quiz.</div>
+        <div class="info">Every wrong answer will subtract 10 seconds from the timer.</div>
+        <div class="info">You may only select a single option.</div>
+        <div class="info">Once you have selected your option, you may not change your answer.</div>
+        <div class="info">The quiz is over when you have answered all the questions or the timer hits 0.</div>
+          <!--Start Button-->
         <button id= "start_btn" class="button">Start</button>
+      </div>
 
-        <div id="questions"></div>
+      <div id="quiz_container" class="hidden">
+       
+        <h2 id="questions">Questions</h2>
 
         <div id="answers" class="ans_grid">
-          <button class="button">Answer 1</button>
-          <button class="button">Answer 2</button>
-          <button class="button">Answer 3</button>
-          <button class="button">Answer 4</button>
+          <button class="answer" id="a_text">Answer 1</button>
+          <button class="answer" id="b_text">Answer 2</button>
+          <button class="answer" id="c_text">Answer 3</button>
+          <button class="answer" id="d_text">Answer 4</button>
         </div>
       </div>
+      <div>
+
+
+      </div>
+
     </div>
     
     <script src="./Assets/JS/script.js" ></script>

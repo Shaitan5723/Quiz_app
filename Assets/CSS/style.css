@@ -16,22 +16,26 @@ body{
 
 .nav{
   position:fixed;
+  width: 100%;
   top: 0;
-  display: inline-flex;
+  display: flex;
   background-color: grey;
   border-width: 2px;
   border-color:black;
+  align-content: space-between;
 }
 
 .score{
   float:left;
   font-size: 25px;
   padding: 5px;
+  margin-right: 70%;
   font-weight: bold;
   text-align: center;
 }
 
 .timer{
+  align-self: flex-end;
   float: right;
   font-size: 25px;
   padding: 5px;
@@ -40,13 +44,11 @@ body{
 }
 
 .container{
+  display:flex;
   position: fixed;
   top:50%;
   left:50%;
   transform: translate(-50%, -50%);
-}
-
-#quiz-container{
   background-color: white;
   border-radius: 5px;
   border-width: 1px;
@@ -54,8 +56,45 @@ body{
   box-shadow: 0 0 10px 2px;
 }
 
+#instructions{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+h1{
+  justify-content: center;
+  align-items: center;
+}
+
+.info{
+  padding: 10px;
+}
+
+#quiz-container{
+  background-color: white;
+  display: flex;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color:black;
+  box-shadow: 0 0 10px 2px;
+}
+
+ /*hidden class hides parts of the html content when required;*/
+.hidden{
+  display: none;
+}
+
+h2 {
+  font-size: 25px;
+  padding: 10px;
+  margin-bottom: 10px;
+
+}
+
 .ans-grid {
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin: 20px;
 
 }
@@ -79,4 +118,30 @@ body{
 
 #start_btn{
   font-size: 25px;
+  justify-content: center;
+}
+
+.answer{
+  font-size: 15px;
+  font-weight: 500;
+  width: 100%;
+  color: var(--blue);
+  padding: 15px 15px;
+  border-width: 2px;
+  border-color: var(--blue);
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.answer:hover {
+  background-color: rgb(244, 244, 207);
+  border-width: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  #quiz-container {
+    min-width: 400px;
+  }
+  
 }
