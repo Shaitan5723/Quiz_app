@@ -5,7 +5,7 @@ const quizQ = [
     b: 'Python',
     c: 'Java',
     d: 'Ruby',
-    answer: 'Javascript'
+    answer: 'A',
   },
   {
     question: 'What does NaN stand for in Javascript?',
@@ -13,7 +13,7 @@ const quizQ = [
     b: 'Not a Node',
     c: 'Not a Number',
     d: 'Insert New Line',
-    answer: 'Not a Number'
+    answer: 'C',
   },
   {
     question: 'Which of the following is not a Javascript data type?',
@@ -21,7 +21,7 @@ const quizQ = [
     b: 'Integer',
     c: 'Symbol',
     d: 'String',
-    answer: 'Integer'
+    answer: 'B',
   },
   {
     question: 'In Javascript, what is a block of statement?',
@@ -29,7 +29,7 @@ const quizQ = [
     b: 'Block that combines a number of statements into a single compound statement',
     c: 'Both conditional block and a single statement',
     d: 'Block that contains a single statement',
-    answer: 'Block that combines a number of statements into a single compound statement'
+    answer: 'B',
   },
   {
     question: 'The "function" and "var" are known as:',
@@ -37,7 +37,7 @@ const quizQ = [
     b: 'Data types',
     c: 'Declaration statements',
     d: 'Prototypes',
-    answer: 'Declaration statements'
+    answer: 'C',
   },
   {
     question: 'Which of the following variables takes precedence over the others if the names are the same?',
@@ -45,7 +45,7 @@ const quizQ = [
     b: 'The local element',
     c: 'Both of the above',
     d: 'None of the above',
-    answer: 'The local element'
+    answer: 'B',
   },
   {
     question: 'Which one of the following is the corect way for calling the Javascript code?',
@@ -53,7 +53,7 @@ const quizQ = [
     b: 'Triggering Event',
     c: 'RMI',
     d: 'Fuction/Method',
-    answer: 'Fuction/Method'
+    answer: 'D',
   },
   {
     question: "In Javascript, which one of the following is not considered an error?",
@@ -61,7 +61,7 @@ const quizQ = [
     b: 'Missing of semicolons',
     c: 'Division by zero',
     d: 'Missing of bracket',
-    answer: 'Division by zero'
+    answer: 'C',
   },
   {
     question: "Which of the following given functions of the Number Object formats a number with a different number of digits to the right of the decimal?",
@@ -69,14 +69,14 @@ const quizQ = [
     b: 'toFixed()',
     c: 'toPrecision()',
     d: 'toLocaleString()',
-    answer: 'toFixed()'
+    answer: 'B',
   },
   {question: "Which of the following number object functions returns the value of the number?",
     a: 'toString()',
     b: 'valueOf()',
     c: 'toPrecision()',
     d: 'toLocaleString()',
-    answer: 'valueOf()'
+    answer: 'B',
   },
 ]
 const startBtn = document.getElementById('start_btn')
@@ -84,20 +84,24 @@ const instructions = document.getElementById('instructions')
 const quizContainerEl = document.getElementById('quiz_container')
 const questions = document.getElementById('questions')
 const answerEls = document.querySelectorAll('.answer')
-const a_text = document.getElementById('a_text')
-const b_text = document.getElementById('b_text')
-const c_text = document.getElementById('c_text')
-const d_text = document.getElementById('d_text')
+const A = document.getElementById('A')
+const B = document.getElementById('B')
+const C = document.getElementById('C')
+const D = document.getElementById('D')
+const name = document.getElementById('name')
+const saveScore = document.getElementById('saveScore')
+const finalScore = document.getElementById('finalScore')
+const allScores = localStorage.getItem('scores')
+const scoreBoard = document.getElementById('highScores')
 
+scoreBoard.addEventListener('click', submitAnswer)
 startBtn.addEventListener('click', startGame)
 startBtn.addEventListener('click', startTimer)
 
 let currentQ = 0
 let score = 0
 
-
-
-var total_seconds = 60*2;
+var total_seconds = 60*5;
 var c_minutes = parseInt(total_seconds/60);
 var c_seconds = parseInt(total_seconds%60);
 
@@ -106,7 +110,7 @@ function startTimer() {
     document.getElementById("timer").innerHTML
     ='Time Left: ' + c_minutes + ' minutes ' + c_seconds + ' seconds ';
     if(total_seconds <=0){
-      setTimeout('document.quiz.submit()', 1);
+      submitAnswer();
     } else {
      total_seconds = total_seconds -1;
       c_minutes = parseInt(total_seconds/60);
@@ -117,22 +121,83 @@ function startTimer() {
 }
 
 function startGame(){
-  instructions.classList.add('hidden')
-  quizContainerEl.classList.remove('hidden')
+  instructions.classList.add('hidden');
+  quizContainerEl.classList.remove('hidden');
   currentQ = 0
   score = 0
-  
-  nextQuestion()
-
+  nextQuestion();
 }
 
 function nextQuestion(){
-  const quizData = quizQ[currentQ]
+  const quizData = quizQ[currentQ];
+  questions.innerText = quizData.question;
+  A.innerText = quizData.a;
+  B.innerText = quizData.b;
+  C.innerText = quizData.c;
+  D.innerText = quizData.d;
 
-  questions.innerText = quizData.question
-  a_text.innerText = quizData.a
-  b_text.innerText = quizData.b
-  c_text.innerText = quizData.c
-  d_text.innerText = quizData.d
+ /*answerEls.addEventListener('click', selectAnswer)*/
+
+  let answer = toString(selectAnswer());
+  if(quizQ[currentQ].answer == answer && currentQ < 9){
+    score++;
+    currentQ++;
+    nextQuestion()
+
+  } else if (quizQ[currentQ].answer !== answer && currentQ < 9){
+    total_seconds - 10;
+    currentQ++;
+    nextQuestion()
+
+  } else if (currentQ > 9) { 
+    submitAnswer()
+  }
 
 }
+
+function selectAnswer() {
+ /* const selectedBtn = e.target
+  const correct = selectedBtn.quizData.answer*/
+
+   
+  A.addEventListener('click', selectA)
+  B.addEventListener('click', selectB)
+  C.addEventListener('click', selectC)
+  D.addEventListener('click', selectD)
+
+  if (selectA == true){
+    return 'A'
+  }
+  else if (selectB == true){
+    return 'B'
+  }
+  else if (selectC == true){
+    return 'C'
+  }
+  else if (selectD == true){
+    return 'D'
+  } else {
+    selectAnswer;
+  }
+
+}
+
+function selectA() {
+  return true;
+}
+function selectB() {
+  return true;
+}
+function selectC() {
+  return true;
+}
+function selectD() {
+  return true;
+}
+
+function submitAnswer(){
+  quizContainerEl.classList.add('hidden');
+  scoreBoard.classList.remove('hidden');
+
+}
+

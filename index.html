@@ -11,37 +11,53 @@
   <body>
     <!--nav bar with high scores and timer-->
     <div class="nav">
-      <div id="score" class="score">High Scores</div>
+      <div id="highScores" class="score">High Scores</div>
       <div id="timer" class="timer">Timer</div>
     </div>
 
     <div class="container">
+
       <!--Instructions-->
       <div id="instructions">
         <h1>Instructions</h1>
-        <div class="info">You have 2 minutes (120 seconds) to complete this quiz.</div>
+        <div class="info">You have 5 minutes (300 seconds) to complete this quiz.</div>
         <div class="info">Every wrong answer will subtract 10 seconds from the timer.</div>
         <div class="info">You may only select a single option.</div>
         <div class="info">Once you have selected your option, you may not change your answer.</div>
         <div class="info">The quiz is over when you have answered all the questions or the timer hits 0.</div>
+
           <!--Start Button-->
         <button id= "start_btn" class="button">Start</button>
       </div>
-
+      
+      <!--Quiz Container-->
       <div id="quiz_container" class="hidden">
-       
+        <!--Multplie Choice Question-->
         <h2 id="questions">Questions</h2>
 
+        <!--Multiple Choice Answers-->
         <div id="answers" class="ans_grid">
-          <button class="answer" id="a_text">Answer 1</button>
-          <button class="answer" id="b_text">Answer 2</button>
-          <button class="answer" id="c_text">Answer 3</button>
-          <button class="answer" id="d_text">Answer 4</button>
+          <button class="answer" id="A">Answer A</button>
+          <button class="answer" id="B">Answer B</button>
+          <button class="answer" id="C">Answer C</button>
+          <button class="answer" id="D">Answer D</button>
         </div>
       </div>
-      <div>
+      <!--ScoreBoard-->
+      <div id='highscores'>
+        <h3 id="completion">The test is over!</h3>
+        <!--form to submit user's name-->
+        <form>
+            <input type = 'text' name="user" id="user" placeholder="Enter your Name"/>
+            <button type = 'submit' class="button" id = 'saveScore' onclick="saveHighScore(event)">
+            Save
+            </button>
+        </form>
+        <!--Leaderboard to display high scores-->
+        <h3 id='scores'>LeaderBoard</h3>
+        <ul id='scoreList'>
 
-
+        </ul>
       </div>
 
     </div>
