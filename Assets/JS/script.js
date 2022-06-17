@@ -1,3 +1,4 @@
+/* Array containing the questions for the quiz*/
 const quizQ = [
   {
     question: 'Which of the following languages functions primarily in a web browser?',
@@ -88,19 +89,16 @@ const A = document.getElementById('A')
 const B = document.getElementById('B')
 const C = document.getElementById('C')
 const D = document.getElementById('D')
-const name = document.getElementById('name')
-const saveScore = document.getElementById('saveScore')
-const finalScore = document.getElementById('finalScore')
-const allScores = localStorage.getItem('scores')
-const scoreBoard = document.getElementById('highScores')
 
-scoreBoard.addEventListener('click', submitAnswer)
+/* starts the quiz and timer after the start button is clicked*/
 startBtn.addEventListener('click', startGame)
 startBtn.addEventListener('click', startTimer)
 
+/* sets the current question and score to 0*/
 let currentQ = 0
 let score = 0
 
+/* variables and function for the timer*/
 var total_seconds = 60*5;
 var c_minutes = parseInt(total_seconds/60);
 var c_seconds = parseInt(total_seconds%60);
@@ -120,6 +118,7 @@ function startTimer() {
   }, 1000);
 }
 
+/* Starts the game*/
 function startGame(){
   instructions.classList.add('hidden');
   quizContainerEl.classList.remove('hidden');
@@ -128,6 +127,7 @@ function startGame(){
   nextQuestion();
 }
 
+/* Displays the next question*/
 function nextQuestion(){
   const quizData = quizQ[currentQ];
   questions.innerText = quizData.question;
@@ -150,15 +150,16 @@ function nextQuestion(){
     nextQuestion()
 
   } else if (currentQ > 9) { 
+    localStorage.setItem('mostRecentScore', score)
     submitAnswer()
   }
 
 }
-
+/* Receives user input as a choice*/
 function selectAnswer() {
  /* const selectedBtn = e.target
   const correct = selectedBtn.quizData.answer*/
-
+  selectAnswer.preventDefault();
    
   A.addEventListener('click', selectA)
   B.addEventListener('click', selectB)
@@ -195,9 +196,48 @@ function selectD() {
   return true;
 }
 
+/*The functions and variables below are used for the scoreboard/leaderboard*/
+const mostRecentScore = localStorage.getItem('mostRecentScore')
+const user = document.getElementById('user')
+const saveScore = document.getElementById('saveScore')
+const finalScore = document.getElementById('finalScore')
+const scoreList = document.getElementById('scoreList')
+const viewScoreBoard = document.getElementById('highScores')
+const scoreBoard = document.getElementById('scoreBoard')
+finalScore.innerText = mostRecentScore
+const allScores = JSON.parse(localStorage.getItem('score'))
+const MAX_SCORES = 5
+
+viewScoreBoard.addEventListener('click', submitAnswer)
+
+const scores = JSON.parse(localStorage.getItem('allScores'))
+
+/*hides both the instruction and quiz containers and displays the scoreboard container*/
 function submitAnswer(){
   quizContainerEl.classList.add('hidden');
+  instructions.classList.add('hidden');
   scoreBoard.classList.remove('hidden');
+}
+
+
+user.addEventListener("keyup", () => {
+});
+
+/*Saves user's name and score*/
+saveHighScore = e => {
+  e.preventDefault();
+
+  const score = {
+    score: mostRecentScore,
+    name: user.value
+  };
+  allScores.push(score);
+  localStorage.setItem('allScores', JSON.stringify([]));
 
 }
 
+/*adds list of strings from local storage to leaderboard*/
+scoreList.innerHTML = allScores.map (score => {
+  return '<li> ${score.name} - ${score.score} </li>';
+})
+.join("");

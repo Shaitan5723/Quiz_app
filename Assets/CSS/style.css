@@ -143,10 +143,25 @@ h2 {
   #quiz-container {
     min-width: 400px;
   }
+  #scoreContainer {
+    min-width: 400px;
+  }
+}
+
+#scoreContainer {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  background-color: white;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color:black;
+  box-shadow: 0 0 10px 2px;
+  align-items: center;
 }
 
 form {
-  width:100%;
+  width:50%;
   display: flex;
   flex-direction: column;
   align-items:center;
@@ -159,4 +174,9 @@ input {
   font-size: 20px;
   border: none;
   box-shadow: 0 0 10px 2px;
+}
+
+h3 {
+  align-items: center;
+  margin: 20px;
 }

@@ -44,22 +44,24 @@
         </div>
       </div>
       <!--ScoreBoard-->
-      <div id='highscores'>
-        <h3 id="completion">The test is over!</h3>
-        <!--form to submit user's name-->
-        <form>
+      <div id='scoreBoard' class = 'hidden'>
+        <div id="scoreContainer">
+          <h3 id="completion">The test is over! You scored <span id = 'finalScore' >0</span> out of 10. 
+          Please enter your name in the box below to save your score.</h3>
+          <!--form to submit user's name-->
+          <form>
             <input type = 'text' name="user" id="user" placeholder="Enter your Name"/>
             <button type = 'submit' class="button" id = 'saveScore' onclick="saveHighScore(event)">
             Save
             </button>
-        </form>
-        <!--Leaderboard to display high scores-->
-        <h3 id='scores'>LeaderBoard</h3>
-        <ul id='scoreList'>
+          </form>
+          <!--Leaderboard to display high scores-->
+          <h3>LeaderBoard</h3>
+          <ul id='scoreList'>
 
-        </ul>
+          </ul>
+        </div>
       </div>
-
     </div>
     
     <script src="./Assets/JS/script.js" ></script>

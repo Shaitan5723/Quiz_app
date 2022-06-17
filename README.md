@@ -18,4 +18,4 @@ If the timer runs out of time, or you have completed the final question, you wil
 ![saving your score](/Assets/images/save_score.png)
 
 Once you have submitted your name, your score will be recorded, and you will be shown the list of high scores.
-![quiz has begun](/Assets/images/quiz_questions.png)
+![leaderboard](/Assets/images/leaderboard.png)
